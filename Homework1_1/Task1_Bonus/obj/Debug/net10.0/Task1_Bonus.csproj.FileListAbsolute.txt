@@ -1,0 +1,14 @@
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/bin/Debug/net10.0/Task1_Bonus
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/bin/Debug/net10.0/Task1_Bonus.deps.json
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/bin/Debug/net10.0/Task1_Bonus.runtimeconfig.json
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/bin/Debug/net10.0/Task1_Bonus.dll
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/bin/Debug/net10.0/Task1_Bonus.pdb
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/obj/Debug/net10.0/Task1_Bonus.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/obj/Debug/net10.0/Task1_Bonus.AssemblyInfoInputs.cache
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/obj/Debug/net10.0/Task1_Bonus.AssemblyInfo.cs
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/obj/Debug/net10.0/Task1_Bonus.csproj.CoreCompileInputs.cache
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/obj/Debug/net10.0/Task1_Bonus.dll
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/obj/Debug/net10.0/refint/Task1_Bonus.dll
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/obj/Debug/net10.0/Task1_Bonus.pdb
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/obj/Debug/net10.0/Task1_Bonus.genruntimeconfig.cache
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Bonus/obj/Debug/net10.0/ref/Task1_Bonus.dll

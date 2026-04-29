@@ -1,0 +1,14 @@
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/bin/Debug/net10.0/Task1_Converter
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/bin/Debug/net10.0/Task1_Converter.deps.json
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/bin/Debug/net10.0/Task1_Converter.runtimeconfig.json
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/bin/Debug/net10.0/Task1_Converter.dll
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/bin/Debug/net10.0/Task1_Converter.pdb
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/obj/Debug/net10.0/Task1_Converter.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/obj/Debug/net10.0/Task1_Converter.AssemblyInfoInputs.cache
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/obj/Debug/net10.0/Task1_Converter.AssemblyInfo.cs
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/obj/Debug/net10.0/Task1_Converter.csproj.CoreCompileInputs.cache
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/obj/Debug/net10.0/Task1_Converter.dll
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/obj/Debug/net10.0/refint/Task1_Converter.dll
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/obj/Debug/net10.0/Task1_Converter.pdb
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/obj/Debug/net10.0/Task1_Converter.genruntimeconfig.cache
+/Users/sofi/Rider_Techgen/Homework1_1/Task1_Converter/obj/Debug/net10.0/ref/Task1_Converter.dll
