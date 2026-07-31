@@ -1,0 +1,14 @@
+/Users/sofi/Rider_Techgen/Calculator/Store/obj/Debug/net10.0/Store.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sofi/Rider_Techgen/Calculator/Store/obj/Debug/net10.0/Store.AssemblyInfoInputs.cache
+/Users/sofi/Rider_Techgen/Calculator/Store/obj/Debug/net10.0/Store.AssemblyInfo.cs
+/Users/sofi/Rider_Techgen/Calculator/Store/obj/Debug/net10.0/Store.csproj.CoreCompileInputs.cache
+/Users/sofi/Rider_Techgen/Calculator/Store/bin/Debug/net10.0/Store
+/Users/sofi/Rider_Techgen/Calculator/Store/bin/Debug/net10.0/Store.deps.json
+/Users/sofi/Rider_Techgen/Calculator/Store/bin/Debug/net10.0/Store.runtimeconfig.json
+/Users/sofi/Rider_Techgen/Calculator/Store/bin/Debug/net10.0/Store.dll
+/Users/sofi/Rider_Techgen/Calculator/Store/bin/Debug/net10.0/Store.pdb
+/Users/sofi/Rider_Techgen/Calculator/Store/obj/Debug/net10.0/Store.dll
+/Users/sofi/Rider_Techgen/Calculator/Store/obj/Debug/net10.0/refint/Store.dll
+/Users/sofi/Rider_Techgen/Calculator/Store/obj/Debug/net10.0/Store.pdb
+/Users/sofi/Rider_Techgen/Calculator/Store/obj/Debug/net10.0/Store.genruntimeconfig.cache
+/Users/sofi/Rider_Techgen/Calculator/Store/obj/Debug/net10.0/ref/Store.dll
