@@ -23,4 +23,5 @@ obj/
 # Logs
 *.log
 
-.un~
+# Editor backups
+*~
