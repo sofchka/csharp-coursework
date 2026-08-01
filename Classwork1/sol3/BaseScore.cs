@@ -9,7 +9,7 @@ public abstract class BaseScore : IScore
         this.Score = score;
     }
 
-    public abstract bool ValidateScore(); // musr override
+    public abstract bool ValidateScore(); // must override
 
     public abstract void PrintLog();
 }

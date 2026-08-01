@@ -2,13 +2,17 @@ namespace sol3;
 
 public class Process
 {
-    private readonly int _score;
+    private int _score;
 
-    public Process()
+    public void ReadInfo()
     {
         Console.WriteLine("Enter you score (0-100): ...");
         _score = Convert.ToInt16(Console.ReadLine());
         Console.Beep();
+    }
+
+    public void Validate()
+    {
         var scores = new List<BaseScore>
         {
             new AScore(_score),
