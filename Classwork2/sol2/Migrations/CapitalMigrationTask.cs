@@ -1,8 +1,12 @@
 namespace Classwork2.Migrations;
 
-public class CapitalMigrationTask : IMigrationTask
+public class CapitalMigrationTask : MigrationTask
 {
-    public void Start()
+    public CapitalMigrationTask() : base(3)
+    {
+    }
+
+    public override void Run()
     {
         Console.WriteLine("3");
     }

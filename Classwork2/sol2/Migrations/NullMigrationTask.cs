@@ -1,9 +1,12 @@
 namespace Classwork2.Migrations;
 
-public class NullMigrationTask : IMigrationTask
+public class NullMigrationTask : MigrationTask
 {
-    public void Start()
+    public NullMigrationTask() : base(4)
+    {}
+
+    public override void Run()
     {
-        Console.WriteLine("1");
+        Console.WriteLine("4");
     }
 }

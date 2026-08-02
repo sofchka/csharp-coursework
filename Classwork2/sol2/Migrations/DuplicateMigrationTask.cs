@@ -1,9 +1,13 @@
 namespace Classwork2.Migrations;
 
-public class DuplicateMigrationTask : IMigrationTask
+public class DuplicateMigrationTask : MigrationTask
 {
-    public void Start()
+    public DuplicateMigrationTask() : base(5)
     {
-        Console.WriteLine("2");
+    }
+
+    public override void Run()
+    {
+        Console.WriteLine("5");
     }
 }

@@ -1,37 +1,60 @@
+using Classwork2.Model;
 namespace Classwork2.Migrations;
 
 public class Migration
 {
-    private int _id;
-    private readonly IMigrationTask[] _list =
-    {
-        new NullMigrationTask(),
-        new DuplicateMigrationTask(),
-        new CapitalMigrationTask()
-    };
+    private const string FileName = "Data/migrations.txt";
+
+    private readonly HashSet<int> _completed = [];
+
+    private readonly MigrationTask[] _tasks;
 
     public Migration()
     {
-        _id = 0;
-        try
+        UsersDataCollection users = new UsersDataCollection();
+        
+        _tasks =
+        [
+            new CreateUsersMigrationTask(),
+            new ValidateBirthDateMigration(users),
+            new CapitalMigrationTask(),
+            new NullMigrationTask(),
+            new DuplicateMigrationTask()
+        ];
+        
+        Directory.CreateDirectory("Data");
+
+        if (!File.Exists(FileName))
+            return;
+
+        foreach (var line in File.ReadAllLines(FileName))
+            _completed.Add(int.Parse(line));
+    }
+
+    public void Run()
+    {
+        foreach (var task in _tasks)
         {
-            Directory.CreateDirectory("Cache");
-            if (File.Exists("Cache/counter.txt"))
-                _id = int.Parse(File.ReadAllText("Cache/counter.txt"));
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
+            if (_completed.Contains(task.Id))
+                continue;
+
+            Console.WriteLine($"Running migration {task.Id}");
+
+            task.Run();
+
+            _completed.Add(task.Id);
+
+            File.AppendAllText(
+                FileName,
+                task.Id + Environment.NewLine);
         }
     }
 
-    public void Start()
+    public void OldRunsForget()
     {
-        while (_id < _list.Length)
-        {
-            _list[_id].Start();
-            _id++;
-            File.WriteAllText("Cache/counter.txt", _id.ToString());
-        }
+        if (!File.Exists(FileName))
+            return;
+        File.WriteAllText(FileName, "");
     }
+    
 }
