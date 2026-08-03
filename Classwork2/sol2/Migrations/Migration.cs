@@ -9,9 +9,9 @@ public class Migration
 
     private readonly MigrationTask[] _tasks;
 
-    public Migration()
+    public Migration(string filename)
     {
-        UsersDataCollection users = new UsersDataCollection();
+        UsersDataCollection users = new UsersDataCollection(filename);
         
         _tasks =
         [

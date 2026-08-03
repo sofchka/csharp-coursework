@@ -2,7 +2,7 @@
 
 
 
-var migration = new Migration();
+var migration = new Migration("alo.csv");
 
 
 migration.Run();
