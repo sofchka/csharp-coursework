@@ -1,6 +1,7 @@
 using Classwork2.Model;
-namespace Classwork2.Migrations;
+using Classwork2.Data;
 
+namespace Classwork2.Migrations;
 
 public class ValidateBirthDateMigration : MigrationTask
 {

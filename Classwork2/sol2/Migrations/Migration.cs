@@ -1,9 +1,10 @@
 using Classwork2.Model;
+using Classwork2.Data;
 namespace Classwork2.Migrations;
 
 public class Migration
 {
-    private const string FileName = "Data/migrations.txt";
+    private readonly string _fileName;
     
     private readonly string _csvFileName;
 
@@ -16,6 +17,8 @@ public class Migration
     public Migration(string filename)
     {
         _csvFileName = filename;
+
+        _fileName = Path.GetDirectoryName(Path.GetDirectoryName(filename)) + "/Cache/" + "migrations.txt";
         
         _users = new UsersDataCollection(filename);
         
@@ -30,10 +33,10 @@ public class Migration
         
         Directory.CreateDirectory("Data");
 
-        if (!File.Exists(FileName))
+        if (!File.Exists(_fileName))
             return;
 
-        foreach (var line in File.ReadAllLines(FileName))
+        foreach (var line in File.ReadAllLines(_fileName))
             _completed.Add(int.Parse(line));
     }
 
@@ -56,9 +59,9 @@ public class Migration
 
     public void OldRunsForget()
     {
-        if (!File.Exists(FileName))
+        if (!File.Exists(_fileName))
             return;
-        File.WriteAllText(FileName, "");
+        File.WriteAllText(_fileName, "");
     }
 
     private void MigrationStorage(MigrationTask task)
@@ -66,7 +69,7 @@ public class Migration
         _completed.Add(task.Id);
 
         File.AppendAllText(
-            FileName,
+            _fileName,
             task.Id + Environment.NewLine);
     }
 

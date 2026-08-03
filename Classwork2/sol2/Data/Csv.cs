@@ -1,6 +1,6 @@
 using Classwork2.Model;
 
-namespace Classwork2.Csv;
+namespace Classwork2.Data;
 
 public class CsvProcessing
 {
