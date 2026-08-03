@@ -5,9 +5,9 @@ public class Migration
 {
     private const string FileName = "Data/migrations.txt";
     
-    private string CsvFileName;
+    private readonly string _csvFileName;
 
-    private UsersDataCollection _users;
+    private readonly UsersDataCollection _users;
 
     private readonly HashSet<int> _completed = [];
 
@@ -15,7 +15,7 @@ public class Migration
 
     public Migration(string filename)
     {
-        CsvFileName = filename;
+        _csvFileName = filename;
         
         _users = new UsersDataCollection(filename);
         
@@ -48,15 +48,10 @@ public class Migration
 
             task.Run();
 
-            _completed.Add(task.Id);
-
-            File.AppendAllText(
-                FileName,
-                task.Id + Environment.NewLine);
+            MigrationStorage(task);
         }
         
-        if (CsvFileName.Length > 4)
-            _users.UsersDataSave(CsvFileName.Insert(CsvFileName.Length - 4, "_result"));
+        MigrationSave();
     }
 
     public void OldRunsForget()
@@ -65,5 +60,24 @@ public class Migration
             return;
         File.WriteAllText(FileName, "");
     }
-    
+
+    private void MigrationStorage(MigrationTask task)
+    {
+        _completed.Add(task.Id);
+
+        File.AppendAllText(
+            FileName,
+            task.Id + Environment.NewLine);
+    }
+
+    private void MigrationSave()
+    {
+        string result =
+            Path.GetDirectoryName(_csvFileName)! + "/"
+            + Path.GetFileNameWithoutExtension(_csvFileName)
+            + "_result"
+            + Path.GetExtension(_csvFileName);
+        
+        _users.UsersDataSave(result);
+    }
 }

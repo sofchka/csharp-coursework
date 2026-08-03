@@ -5,8 +5,7 @@ namespace Classwork2.Migrations;
 public class ValidateBirthDateMigration : MigrationTask
 {
     private readonly UsersDataCollection _users;
-
-
+    
     public ValidateBirthDateMigration(
         UsersDataCollection users
     ) : base(2)
