@@ -11,4 +11,10 @@ public class UsersDataCollection
     {
         Users = _csv.ReadData(filename);
     }
+
+    public void UsersDataSave(string filename)
+    {
+        _csv.WriteData(filename, Users);
+        Console.WriteLine("\nYour File is ready: " + filename);
+    }
 }

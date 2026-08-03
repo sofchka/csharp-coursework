@@ -19,14 +19,19 @@ public class ValidateBirthDateMigration : MigrationTask
     {
         foreach (var user in _users.Users)
         {
-            if (user.BirthDate.Year < 2025)
+            if (user.BirthDate.Year > 2007)
             {
+                Console.WriteLine("=========================================");
+
                 Console.WriteLine(
-                    $"Fixing {user.Name}"
+                    $"Fixing {user.Name}'s status => under the age"
                 );
 
-                user.BirthDate =
-                    new DateTime(2025, 1, 1);
+                Console.WriteLine($"Old status = {user.Status}");
+                user.Status = "user.underAge";
+                Console.WriteLine($"New status = {user.Status}");
+                
+                Console.WriteLine("=========================================");
             }
         }
     }

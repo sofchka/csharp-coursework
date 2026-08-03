@@ -4,6 +4,10 @@ namespace Classwork2.Migrations;
 public class Migration
 {
     private const string FileName = "Data/migrations.txt";
+    
+    private string CsvFileName;
+
+    private UsersDataCollection _users;
 
     private readonly HashSet<int> _completed = [];
 
@@ -11,12 +15,14 @@ public class Migration
 
     public Migration(string filename)
     {
-        UsersDataCollection users = new UsersDataCollection(filename);
+        CsvFileName = filename;
+        
+        _users = new UsersDataCollection(filename);
         
         _tasks =
         [
             new CreateUsersMigrationTask(),
-            new ValidateBirthDateMigration(users),
+            new ValidateBirthDateMigration(_users),
             new CapitalMigrationTask(),
             new NullMigrationTask(),
             new DuplicateMigrationTask()
@@ -48,6 +54,9 @@ public class Migration
                 FileName,
                 task.Id + Environment.NewLine);
         }
+        
+        if (CsvFileName.Length > 4)
+            _users.UsersDataSave(CsvFileName.Insert(CsvFileName.Length - 4, "_result"));
     }
 
     public void OldRunsForget()

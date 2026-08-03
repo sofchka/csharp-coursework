@@ -6,18 +6,31 @@ public class CsvProcessing
 {
     public List<User> ReadData(string fileName)
     {
-        var userCollection = new List<User>()
+        List<User> listofUsers = new List<User>(); // list is flexible (for adding (array no)
+        foreach (var line in File.ReadLines(fileName))
         {
-            new User("Syuzi", new DateTime(2020, 1, 1)),
-            new User("Sofi", new DateTime(2030, 5, 5))
-        };
+            if (line == "")
+                continue;
+            string[] fields = line.Split(',');
+            if (fields[0] == "")
+                continue;
+            if (fields.Length >= 3)
+            {
+                User newUser = new User(fields[0], fields[1], fields[2]);
+                listofUsers.Add(newUser);
+            }
+        }
 
-        return userCollection;
-
+        return listofUsers;
     }
     
-    public void WriteData(string fileName)
+    public void WriteData(string fileName, List<User> users)
     {
-        
+        using StreamWriter writer = new StreamWriter(fileName);
+
+        foreach (User user in users)
+        {
+            writer.WriteLine($"{user.Name},{user.BirthDate:dd.MM.yyyy},{user.Status}");
+        }
     }
 }

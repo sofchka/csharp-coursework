@@ -2,7 +2,7 @@
 
 
 
-var migration = new Migration("alo.csv");
+var migration = new Migration("/Users/sofi/alo123/Classwork2/CSVFILE/csvFile.csv");
 
 
 migration.Run();
