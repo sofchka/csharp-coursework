@@ -1,10 +1,10 @@
-namespace sol1;
+namespace sol2;
 
 public class HttpRequest
 {
     public string Method { get; }
     public string Url { get; }
-    public IReadOnlyDictionary<string, string> Headers { get; }
+    public IReadOnlyDictionary<string, List<string>> Headers { get; }
     public IReadOnlyDictionary<string, string> QueryParameters { get; }
     public string Body { get; }
     public int Timeout { get; }
@@ -13,7 +13,7 @@ public class HttpRequest
     public HttpRequest(
         string method,
         string url,
-        Dictionary<string, string> headers,
+        Dictionary<string, List<string>> headers,
         Dictionary<string, string> queries,
         string body,
         string token,
@@ -28,7 +28,3 @@ public class HttpRequest
         QueryParameters = queries;
     }
 }
-
-// karar liner
-// private readonly string _method;
-// public string Method => _method; // Method returns the private _method's value

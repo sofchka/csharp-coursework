@@ -1,38 +1,41 @@
-namespace sol1;
+namespace sol2;
 
-public class HttpRequestBuilder
+public class HttpRequestBuilder : IHttpRequestBuilder
 {
     private string _method = "";
     private string _url = "";
     private string _body = "";
     private string _token = "";
-    private Dictionary<string, string> _headers = new Dictionary<string, string>();
-    private Dictionary<string, string> _queries = new Dictionary<string, string>();
+    private Dictionary<string, List<string>> _headers = new();
+    private Dictionary<string, string> _queries = new();
     private int _timeoutSeconds;
     
-    public HttpRequestBuilder WithMethod(string method)
+    public IHttpRequestBuilder WithMethod(string method)
     {
         this._method = method;
         return this;
     }
 
-    public HttpRequestBuilder WithUrl(string url)
+    public IHttpRequestBuilder WithUrl(string url)
     {
         this._url = url;
         return this;
     }
 
-    public HttpRequestBuilder AddHeader(string key, string value)
+    public IHttpRequestBuilder AddHeader(string key, string value)
     {
         if (_headers.ContainsKey(key))
-            throw new ArgumentException("Duplicate header key");
-        
-        this._headers.Add(key, value);
+        {
+            _headers[key].Add(value);
+            return this;
+        }
+
+        _headers.Add(key, [value]);
         
         return this;
     }
 
-    public HttpRequestBuilder AddQueryParameter(string key, string value)
+    public IHttpRequestBuilder AddQueryParameter(string key, string value)
     {
         if (_queries.ContainsKey(key))
             throw new ArgumentException("Duplicate query key");
@@ -42,19 +45,19 @@ public class HttpRequestBuilder
         return this;
     }
 
-    public HttpRequestBuilder WithBody(string body)
+    public IHttpRequestBuilder WithBody(string body)
     {
         this._body = body;
         return this;
     }
 
-    public HttpRequestBuilder WithTimeout(int seconds)
+    public IHttpRequestBuilder WithTimeout(int seconds)
     {
         this._timeoutSeconds = seconds;
         return this;
     }
 
-    public HttpRequestBuilder WithAuthentication(string token)
+    public IHttpRequestBuilder WithAuthentication(string token)
     {
         if (string.IsNullOrWhiteSpace(token))
             throw new ArgumentException("Authentication token cannot be empty");
@@ -81,8 +84,22 @@ public class HttpRequestBuilder
         
         Console.WriteLine("Build Ended Successfully");
         return new HttpRequest(_method, _url, 
-            new Dictionary<string,string>(_headers), // we make new because _headers is a reference and can be changed
-            new Dictionary<string,string>(_queries), // our task was immutable so need a copy of header
+            new Dictionary<string, List<string>>(_headers),
+            new Dictionary<string,string>(_queries),
             _body, _token, _timeoutSeconds);
+    }
+    
+    public HttpRequestBuilder Reset()
+    {
+        _method = "";
+        _url = "";
+        _body = "";
+        _token = "";
+        _timeoutSeconds = 0;
+
+        _headers.Clear();
+        _queries.Clear();
+
+        return this;
     }
 }
