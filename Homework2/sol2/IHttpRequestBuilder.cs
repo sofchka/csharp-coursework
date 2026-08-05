@@ -21,4 +21,6 @@ public interface IHttpRequestBuilder
     IHttpRequestBuilder WithAuthentication(string token);
 
     HttpRequest Build();
+
+    IHttpRequestBuilder Reset();
 }

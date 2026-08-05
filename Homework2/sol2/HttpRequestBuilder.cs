@@ -89,7 +89,7 @@ public class HttpRequestBuilder : IHttpRequestBuilder
             _body, _token, _timeoutSeconds);
     }
     
-    public HttpRequestBuilder Reset()
+    public IHttpRequestBuilder Reset()
     {
         _method = "";
         _url = "";
