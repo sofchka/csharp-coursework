@@ -1,8 +1,5 @@
 ﻿Console.WriteLine("Hello, World!");
 
-//generic
-
-
 // interface vs abstract 
 // types of oop 
 // value vs reference
@@ -13,8 +10,14 @@
 // struct vs class
 // null for values = default and null for references
 // list in chka Const ka readonly
-// state pattern
-
-//idisposable interface y 
+// idisposable interface y 
 // using block
 // generic
+
+
+// state pattern
+// strategy pattern
+// dispos , generic tnayin
+
+// test attribute  unite test service 
+// mtnum a classi mej tesnum vor methodn uni attribute test u run anum 
