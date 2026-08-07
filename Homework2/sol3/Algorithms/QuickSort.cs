@@ -21,17 +21,7 @@ public class QuickSort<T> : ISorter<T> where T : IComparable<T> // to use Compar
     {
         List<T> list = new List<T>(_collection);
         
-        for (int i = 0; i < list.Count - 1; i++)
-        {
-            for (int j = 0; j < list.Count - i - 1; j++)
-            {
-                if ((_comparer != null && _comparer.Compare(list[j], list[j + 1]) > 0)
-                    || (_comparer == null && list[j].CompareTo(list[j + 1]) > 0))
-                {
-                    (list[j], list[j + 1]) = (list[j + 1], list[j]);
-                }
-            }
-        }
+        // soon -> alareci
         return list;
     }
 }

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sofi/cSharp/Classwork1/sol1/sol1.csproj",
+      "projectUniqueName": "/Users/sofi/alo123/Classwork1/sol1/sol1.csproj",
       "projectName": "sol1",
-      "projectPath": "/Users/sofi/cSharp/Classwork1/sol1/sol1.csproj",
+      "projectPath": "/Users/sofi/alo123/Classwork1/sol1/sol1.csproj",
       "packagesPath": "/Users/sofi/.nuget/packages/",
-      "outputPath": "/Users/sofi/cSharp/Classwork1/sol1/obj/",
+      "outputPath": "/Users/sofi/alo123/Classwork1/sol1/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/sofi/.nuget/NuGet/NuGet.Config"

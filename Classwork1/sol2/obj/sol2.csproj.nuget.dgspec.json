@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/sofi/cSharp/Classwork1/sol2/sol2.csproj": {}
+    "/Users/sofi/alo123/Classwork1/sol2/sol2.csproj": {}
   },
   "projects": {
-    "/Users/sofi/cSharp/Classwork1/sol2/sol2.csproj": {
+    "/Users/sofi/alo123/Classwork1/sol2/sol2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sofi/cSharp/Classwork1/sol2/sol2.csproj",
+        "projectUniqueName": "/Users/sofi/alo123/Classwork1/sol2/sol2.csproj",
         "projectName": "sol2",
-        "projectPath": "/Users/sofi/cSharp/Classwork1/sol2/sol2.csproj",
+        "projectPath": "/Users/sofi/alo123/Classwork1/sol2/sol2.csproj",
         "packagesPath": "/Users/sofi/.nuget/packages/",
-        "outputPath": "/Users/sofi/cSharp/Classwork1/sol2/obj/",
+        "outputPath": "/Users/sofi/alo123/Classwork1/sol2/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/sofi/.nuget/NuGet/NuGet.Config"

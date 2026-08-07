@@ -9,7 +9,6 @@ namespace sol3;
 // class -> must be reference type (string, array, interface ...)
 // struct -> must be value type (int, double, ...)
 // new() -> must have a public parameterless constructor
-
 //!!!
 // class Factory<T> where T : new()
 // {
@@ -17,10 +16,7 @@ namespace sol3;
 //         return new T();
 //     }
 // }
-//Factory<Person> factory = new Factory<Person>();
-// Person person = factory.Create();
-// IEnumerable<>
-// this type says everything that has separate members(arr, list, set...)
+// IEnumerable<> - >  this type says everything that has separate members(arr, list, set...)
 
 public class Sorter<T> where T : IComparable<T> // this means we accept only type that already know how to compare to each other
 {

@@ -20,18 +20,26 @@ public class SelectionSort<T> : ISorter<T> where T : IComparable<T> // to use Co
     public IEnumerable<T> Sort()
     {
         List<T> list = new List<T>(_collection);
-        
+
         for (int i = 0; i < list.Count - 1; i++)
         {
-            for (int j = 0; j < list.Count - i - 1; j++)
+            int minIndex = i;
+
+            for (int j = i + 1; j < list.Count; j++)
             {
-                if ((_comparer != null && _comparer.Compare(list[j], list[j + 1]) > 0)
-                    || (_comparer == null && list[j].CompareTo(list[j + 1]) > 0))
+                bool isSmaller =
+                    (_comparer != null && _comparer.Compare(list[j], list[minIndex]) < 0) ||
+                    (_comparer == null && list[j].CompareTo(list[minIndex]) < 0);
+
+                if (isSmaller)
                 {
-                    (list[j], list[j + 1]) = (list[j + 1], list[j]);
+                    minIndex = j;
                 }
             }
+
+            (list[i], list[minIndex]) = (list[minIndex], list[i]);
         }
+
         return list;
     }
 }
