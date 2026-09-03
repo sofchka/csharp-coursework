@@ -7,6 +7,7 @@ namespace app;
 class Program
 {
     private static UserService _userService = null!;
+    private static User? _user = null!;
 
     static void Main()
     {
@@ -58,6 +59,10 @@ class Program
                     RequestFriend();
                     break;
 
+                case "7":
+                    Logout();
+                    break;
+
                 case "0":
                     Console.WriteLine("  Goodbye!");
                     return;
@@ -96,6 +101,7 @@ class Program
         Console.WriteLine("  │  [4] Print Users               │");
         Console.WriteLine("  │  [5] Print Friend List         │");
         Console.WriteLine("  │  [6] Request a Friend          │");
+        Console.WriteLine("  │  [7] Logout                    │");
         Console.WriteLine("  │  [0] Exit                      │");
         Console.WriteLine("  └────────────────────────────────┘");
         Console.WriteLine();
@@ -108,6 +114,12 @@ class Program
     static void Register()
     {
         Section("REGISTER");
+
+        if (_userService.loggedIn == true)
+        {
+            Console.WriteLine("You are logged in already, logout first!");
+            return;
+        }
 
         string name = ReadRequired("First name");
         string surname = ReadRequired("Surname");
@@ -135,15 +147,21 @@ class Program
     static void Login()
     {
         Section("LOGIN");
+        
+        if (_userService.loggedIn == true)
+        {
+            Console.WriteLine("You are logged in already, logout first!");
+            return;
+        }
 
         string email = ReadRequired("Email");
         string password = ReadPassword("Password");
 
-        User? user = _userService.Login(email, password);
+        _user = _userService.Login(email, password);
 
         Console.WriteLine();
 
-        if (user == null)
+        if (_user == null)
         {
             Error("Invalid email or password.");
             return;
@@ -152,9 +170,34 @@ class Program
         Success("Login successful!");
 
         Console.WriteLine();
-        Console.WriteLine($"  Welcome, {user.FullName}!");
-        Console.WriteLine($"  Email:    {user.Email}");
-        Console.WriteLine($"  User ID:  {user.UserId}");
+        Console.WriteLine($"  Welcome, {_user.FullName}!");
+        Console.WriteLine($"  Email:    {_user.Email}");
+        Console.WriteLine($"  User ID:  {_user.UserId}");
+    }
+    
+    // =========================
+    // Logout
+    // =========================
+
+    static void Logout()
+    {
+        Section("LOGOUT");
+        
+        if (_userService.loggedIn == false)
+        {
+            Console.WriteLine("You are not even logged in, login first!");
+            return;
+        }
+        
+        _userService.loggedIn = false;
+        _user = null;
+
+        Console.WriteLine();
+
+        Success("Logged out successful!");
+
+        Console.WriteLine();
+        Console.WriteLine($"  See You soon!");
     }
 
     // =========================
@@ -165,21 +208,13 @@ class Program
     {
         Section("CHANGE PASSWORD");
 
-        string email = ReadRequired("Email");
-        string currentPassword = ReadPassword("Current password");
-
-        User? user = _userService.Login(email, currentPassword);
-
-        if (user == null)
+        if (_userService.loggedIn == false || _user == null)
         {
-            Console.WriteLine();
-            Error("Invalid email or current password.");
+            Console.WriteLine("You are not logged in, login first!");
             return;
         }
 
-        Console.WriteLine();
-        Console.WriteLine($"  Hello, {user.FullName}!");
-
+        string currentPassword = ReadPassword("Current password");
         string newPassword = ReadPassword("New password");
         string confirmPassword = ReadPassword("Confirm password");
 
@@ -191,7 +226,7 @@ class Program
         }
 
         bool success = _userService.ChangePassword(
-            user.UserId,
+            _user.UserId,
             currentPassword,
             newPassword);
 
@@ -211,10 +246,7 @@ class Program
     {
         Section("USERS");
 
-        int page = ReadPositiveInteger("Page");
-        int pageSize = ReadPositiveInteger("Users per page");
-
-        List<User> users = _userService.GetUsers(page, pageSize);
+        List<User> users = _userService.GetUsers();
 
         if (users.Count == 0)
         {
@@ -241,9 +273,13 @@ class Program
     {
         Section("FRIEND LIST");
 
-        int userId = ReadPositiveInteger("User ID");
+        if (_userService.loggedIn == false || _user == null)
+        {
+            Console.WriteLine("You are not logged in, login first!");
+            return;
+        }
 
-        List<User> friends = _userService.GetFriends(userId);
+        List<User> friends = _userService.GetFriends(_user.UserId);
 
         Console.WriteLine();
 
@@ -270,11 +306,16 @@ class Program
     {
         Section("REQUEST A FRIEND");
 
-        int userId = ReadPositiveInteger("Your User ID");
+        if (_userService.loggedIn == false || _user == null)
+        {
+            Console.WriteLine("You are not logged in, login first!");
+            return;
+        }
+        
         int friendId = ReadPositiveInteger("Friend User ID");
 
         bool success = _userService.RequestFriend(
-            userId,
+            _user.UserId,
             friendId);
 
         Console.WriteLine();

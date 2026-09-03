@@ -7,6 +7,7 @@ namespace app.Services;
 public class UserService
 {
     private readonly Database _database;
+    public bool loggedIn;
 
     public UserService(Database database)
     {
@@ -38,15 +39,15 @@ public class UserService
             return false;
         }
     }
-
+    
     public User? Login(string email, string password)
     {
         const string sql = """
-            SELECT UserId, Email, FullName
-            FROM Users
-            WHERE Email = $email
-              AND Password = $password;
-            """;
+                           SELECT UserId, Email, FullName
+                           FROM Users
+                           WHERE Email = $email
+                             AND Password = $password;
+                           """;
 
         using var connection = _database.GetConnection();
         using var command = new SqliteCommand(sql, connection);
@@ -59,6 +60,7 @@ public class UserService
         if (!reader.Read())
             return null;
 
+        loggedIn = true;
         return new User
         {
             UserId = reader.GetInt32(0),
@@ -90,20 +92,16 @@ public class UserService
     }
 
     // Print all users using pages.
-    public List<User> GetUsers(int page, int pageSize)
+    public List<User> GetUsers()
     {
         const string sql = """
             SELECT UserId, Email, FullName
             FROM Users
             ORDER BY UserId
-            LIMIT $pageSize OFFSET $offset;
             """;
 
         using var connection = _database.GetConnection();
         using var command = new SqliteCommand(sql, connection);
-
-        command.Parameters.AddWithValue("$pageSize", pageSize);
-        command.Parameters.AddWithValue("$offset", (page - 1) * pageSize);
 
         using var reader = command.ExecuteReader();
 

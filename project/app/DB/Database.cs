@@ -8,11 +8,11 @@ public class Database
     
     public Database()
     {
-        Directory.CreateDirectory("/Users/sofi/Desktop/alo123/project/Database");
+        Directory.CreateDirectory("Database");
 
         var csb = new SqliteConnectionStringBuilder
         {
-            DataSource = "/Users/sofi/Desktop/alo123/project/Database/app.db",
+            DataSource = "Database/app.db",
             ForeignKeys = true
         };
 
